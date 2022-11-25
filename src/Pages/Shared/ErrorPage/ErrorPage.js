@@ -20,7 +20,7 @@ const ErrorPage = () => {
 	return (
 		<>
 			<div className="flex flex-col min-h-[700px] justify-center items-center">
-				
+				<img src={img} alt="" />
 
 				<h1 className="text-4xl">OH NO, PAGE NOT FOUND</h1>
 

@@ -9,7 +9,7 @@ const menuItems = (
 		<li>
 			<Link to="/">Home</Link>
 		</li>
-{/* 
+		{/* 
 		<li>
 			<Link to="/appointment">Appointment</Link>
 		</li>
@@ -22,26 +22,29 @@ const menuItems = (
 		</li> */}
 
 		{/* {user?.uid ? ( */}
-			<>
-				<li>
-					<Link to="/dashboard">Dashboard</Link>
-				</li>
-				<li>
-					{/* <button onClick={handleLogOut}> */}
-						{/* Sign Out */}
-					{/* </button> */}
-				</li>
-			</>
+		<>
+			<li>
+				<Link to="/dashboard">Dashboard</Link>
+			</li>
+			<li>
+				{/* <button onClick={handleLogOut}> */}
+				{/* Sign Out */}
+				{/* </button> */}
+			</li>
+		</>
 		{/* ) : ( */}
-			<>
-				<li>
-					<Link to="/login">Login</Link>
-				</li>
-				<li>
-					<Link to="/register">Register</Link>
-				</li>
-			</>
+		<>
+			<li>
+				<Link to="/login">Login</Link>
+			</li>
+			<li>
+				<Link to="/register">Register</Link>
+			</li>
+		</>
 		{/* )} */}
+		<li>
+			<Link to="/blog">Blog</Link>
+		</li>
 	</React.Fragment>
 );
 

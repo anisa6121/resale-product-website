@@ -4,15 +4,11 @@ import router from './Pages/Routes/Routes/Routes';
 
 function App() {
   return (
-    <div className="App">
-     
-      
-<RouterProvider router={router}></RouterProvider>
-
-
-
-    </div>
+		<div className="max-w-[1440px] mx-auto">
+			<RouterProvider router={router}></RouterProvider>
+		</div>
   );
 }
 
 export default App;
+

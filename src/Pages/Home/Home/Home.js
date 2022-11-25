@@ -1,4 +1,5 @@
 import Banner from '../Banner/Banner';
+import Section from '../Section/Section';
 
 
 const Home = () => {
@@ -6,7 +7,8 @@ const Home = () => {
     return (
         <div>
           
-           <Banner></Banner> 
+            <Banner></Banner> 
+            <Section></Section>
         </div>
     );
 };

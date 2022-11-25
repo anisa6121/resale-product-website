@@ -28,7 +28,7 @@ const ErrorPage = () => {
 
 				{error && (
 					<div>
-						<p className="text-red-900 text-7xl">
+						<p className="text-red-700 text-7xl">
 							{error.statusText ||
 								error.message}
 						</p>

@@ -45,9 +45,7 @@ const menuItems = (
 		<li>
 			<Link to="/blog">Blog</Link>
 		</li>
-		<li>
-			<Link to="/error">Error</Link>
-		</li>
+	
 	</React.Fragment>
 );
 

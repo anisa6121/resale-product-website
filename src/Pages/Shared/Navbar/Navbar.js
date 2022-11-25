@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import logo from '../../../assets/logo.jpg'
+
+
 const menuItems = (
 	<React.Fragment>
 		<li>
@@ -44,8 +47,7 @@ const menuItems = (
 
 const Navbar = () => {
     return (
-        <div className="navbar bg-sky-300 flex justify-between">
-            
+		<div className="navbar bg-sky-300 flex justify-between">
 			<div className="navbar-start">
 				<div className="dropdown">
 					<label
@@ -68,25 +70,29 @@ const Navbar = () => {
 						</svg>
 					</label>
 					<ul
-					tabIndex={0}
-                        className=
-                        "menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-        >
-		{menuItems}
-        </ul>
-                    
-	</div>
-		<Link
-			to="/"
-			className="btn btn-ghost normal-case  text-xl"
+						tabIndex={0}
+						className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+					>
+						{menuItems}
+					</ul>
+				</div>
+
+			
+
+				<Link
+					to="/"
+					className="btn btn-ghost normal-case  text-xl"
 				>
+					<img
+						className="w-[50px]  rounded-lg mx-3"
+						src={logo}
+						alt=""
+					/>
 					Our Product
-				
 				</Link>
 			</div>
 
-            <div className="navbar-center hidden lg:flex">
-                
+			<div className="navbar-center hidden lg:flex">
 				<ul className="menu  menu-horizontal p-0">
 					{menuItems}
 				</ul>

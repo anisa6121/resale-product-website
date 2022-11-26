@@ -5,9 +5,117 @@
       "img": "https://ak1.ostkcdn.com/wp-content/uploads/2017/05/smallappliance-hero.jpg",
       "items":[
         {
-            
+          "name":"Induction Cooker" ,
+          "img" :"https://eplaza.waltonbd.com/image/cache/data/Home%20Appliances/Induction%20Cooker/WI-S37-700-220x220h.jpg",
+          "Seller":"Sahina",
+          "location":"Khulna",
+          "Original Price":"4000",
+          "Resale Price":"3200",
+          "use":"5 months",
+          "post":"5-05-2022"
+        },
+
+          {
+          "name":"Curry Cooker" ,
+          "img" :"https://static-01.daraz.com.bd/p/2a2cd0a17ecfa82491c5284e5272feb3.png",
+          "Seller":"Kohinur",
+          "location":"Rangpur",
+          "Original Price":"3500",
+          "Resale Price":"2000",
+          "use":"9 months",
+          "post":"10-07-2022"
+        },
+         {
+          "name":"Rice Cooker" ,
+          "img" :"https://vision.com.bd/images/thumbnails/240/240/detailed/61/Code_873283_Vision_Rice_cooker_5.6_ltr.jpg",
+          "Seller":"Kobita",
+          "location":"Rangpur",
+          "Original Price":"5000",
+          "Resale Price":"3500",
+          "use":"11 months",
+          "post":"17-07-2022"
         }
+        
       ]
 
+    },
+    {
+        "id":"2",
+      "title": "Nonstick Product" ,
+      "img": "https://m.media-amazon.com/images/I/715qOOqdKNL._AC_SL1500_.jpg",
+       
+      "items":[
+        {
+          "name":"Casserole" ,
+          "img" :"https://rfleshop.com/images/thumbnails/240/240/detailed/57/0072212_topper-nonstick-casserole-set-with-glass-lid.jpeg",
+          "Seller":"Kobita",
+          "location":"Rangpur",
+          "Original Price":"4,140",
+          "Resale Price":"3000",
+          "use":"8 months",
+          "post":"25-07-2022"  
+        },
+        {
+          "name":"Deep Fry Pan" ,
+          "img" :"https://rfleshop.com/images/thumbnails/530/530/detailed/57/0324437_topper-nonstick-glamour-deep-fry-pan-with-lid-red-28-cm.jpeg",
+            "Seller":"Sahina",
+          "location":"Khulna",
+          "Original Price":"2000",
+          "Resale Price":"1500",
+          "use":"4 months",
+          "post":"3-07-2022"  
+        },
+         {
+          "name":"Fry Pan" ,
+          "img" :"https://rfleshop.com/images/thumbnails/530/530/detailed/57/0008084_topper-nonstick-fry-pan-with-lid-red-22-cm.jpeg",
+          "Seller":"Kobita",
+          "location":"Rangpur",
+          "Original Price":"1000",
+          "Resale Price":"800",
+          "use":"2 months",
+          "post":"8-09-2022"  
+        }
+
+
+      ]
+    },
+    {
+        "id":"3",
+         "title": "Aluminium Product" ,
+      "img": "https://m.media-amazon.com/images/I/715qOOqdKNL._AC_SL1500_.jpg",
+      "items":[
+     {
+      "name":"Casserole" ,
+          "img" :"https://www.bce.co.za/wp-content/uploads/2020/12/PAC1020-1.jpg",
+          "Seller":"Kobita",
+          "location":"Rangpur",
+          "Original Price":"4500",
+          "Resale Price":"3200",
+          "use":"6 months",
+          "post":"8-10-2022"     
+     },
+
+ {
+      "name":"Milk Pan" ,
+          "img" :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj813I6qT-glKR8MQtM5LFnHM-h7VhmMPiCQ&usqp=CAU",
+           "Seller":"Kohinur",
+          "location":"Rangpur",
+          "Original Price":"1200",
+          "Resale Price":"900",
+          "use":"4 months",
+          "post":"9-11-2022"     
+     },
+  {
+      "name":"Family Pack Cookware Set" ,
+          "img" :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9XNRe7xnznx_V0Al4YiQ6xgc6tKAXS7EvQg&usqp=CAU",
+           "Seller":"Saifa",
+          "location":"Rangpur",
+          "Original Price":"4000",
+          "Resale Price":"3000",
+          "use":"5 months",
+          "post":"23-8-2022"     
+     }   
+
+      ]
     }
 ]

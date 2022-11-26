@@ -3,14 +3,17 @@ import Main from "../../../Layout/Main";
 import Blog from "../../Blog/Blog";
 import Home from "../../Home/Home/Home";
 import Login from "../../Login/Login";
-import Register from "../../Register/Register";
+
+import Registration from "../../Register/Registration";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
+
 
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <Main></Main>,
+        element: <Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
 		children: [
 			{
 				path: "/",
@@ -22,7 +25,7 @@ export const router = createBrowserRouter([
 			},
 			{
                 path: "/register",
-                element:<Register></Register>
+                element:<Registration></Registration>
             },
             {
                 path: "/blog",

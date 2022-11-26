@@ -33,25 +33,27 @@ const menuItems = (
 			<Link to="/reviews">Reviews</Link>
 		</li> */}
 
-		{user?.uid ? 
-		<>
-			
-			<li>
-			<button onClick={handleLogOut}> 
-				Log Out
-				 </button>
-			</li>
-		</>
-		 : 
-		<>
-			<li>
-				<Link to="/login">Login</Link>
-			</li>
-			<li>
-				<Link to="/register">Register</Link>
-			</li>
-		</>
-		}
+		{user?.uid ? (
+			<>
+				<li>
+					<Link to="/dashboard">Dashboard</Link>
+				</li>
+				<li>
+					<button onClick={handleLogOut}>
+						Log Out
+					</button>
+				</li>
+			</>
+		) : (
+			<>
+				<li>
+					<Link to="/login">Login</Link>
+				</li>
+				<li>
+					<Link to="/register">Register</Link>
+				</li>
+			</>
+		)}
 		<li>
 			<Link to="/blog">Blog</Link>
 		</li>

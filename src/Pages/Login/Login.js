@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-	const { signIn } = useContext(AuthContext);
+	const { signIn, googleSignIn } = useContext(AuthContext);
 
-	const [loginError, setLoginError] = useState("");
+  const [loginError, setLoginError] = useState("");
+  
+  
 
 	const [loginUserEmail, setLoginUserEmail] = useState("");
 	//  const [token] = useToken(loginUserEmail);
@@ -41,6 +44,16 @@ const Login = () => {
 			});
   };
   
+  const handleGoogleSignIn = () => {
+		googleSignIn()
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				// setAuthToken(user);
+			})
+
+			.catch((er) => console.log(er));
+  };
 
 	return (
 		<div className="h-[800px] flex justify-center items-center">
@@ -91,7 +104,7 @@ const Login = () => {
 									message: "Password must be 8 characters or longer",
 								},
 							})}
-							className="input input-bordered w-full max-w-xs"
+							className="input input-bordered w-full max-w-xs mb-5"
 						/>
 						{errors.password && (
 							<p
@@ -104,19 +117,6 @@ const Login = () => {
 								}
 							</p>
 						)}
-
-						<label className="label">
-							{/* <span className="label-text">
-								Forget Password?
-							</span> */}
-
-							<button
-								// onClick={handleReset}
-								className="text-xs hover:underline"
-							>
-								Forget Password?
-							</button>
-						</label>
 					</div>
 
 					<input
@@ -144,7 +144,10 @@ const Login = () => {
 					</Link>
 				</p>
 				<div className="divider">OR</div>
-				<button className="btn btn-error btn-outline w-full">
+				<button
+					onClick={handleGoogleSignIn}
+					className="btn btn-error btn-outline w-full"
+				>
 					Log In WITH GOOGLE
 				</button>
 			</div>

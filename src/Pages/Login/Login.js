@@ -19,11 +19,8 @@ const Login = () => {
 	//  if (token) {
 	// 		navigate(from, { replace: true });
 	//  }
-	const {
-		register,
-		formState: { errors },
-		handleSubmit,
-	} = useForm();
+
+	const {register,formState: { errors },handleSubmit,} = useForm();
 
 	const handleLogin = (data) => {
 		console.log(data);
@@ -42,7 +39,8 @@ const Login = () => {
 				console.log(error.message);
 				setLoginError(error.message);
 			});
-	};
+  };
+  
 
 	return (
 		<div className="h-[800px] flex justify-center items-center">
@@ -62,7 +60,7 @@ const Login = () => {
 						<input
 							type="text"
 							{...register("email", {
-								required: "Email Address is required",
+								required: "Email  is required",
 							})}
 							className="input input-bordered w-full max-w-xs"
 						/>
@@ -89,8 +87,8 @@ const Login = () => {
 								required: "Password is required",
 
 								minLength: {
-									value: 6,
-									message: "Password must be 6 characters or longer",
+									value: 8,
+									message: "Password must be 8 characters or longer",
 								},
 							})}
 							className="input input-bordered w-full max-w-xs"

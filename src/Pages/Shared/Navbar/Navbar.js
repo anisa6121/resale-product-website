@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../../assets/logo.jpg'
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 
+
+
+const Navbar = () => {
+
+const {user, logOut} = useContext(AuthContext)
+
+	const handleLogOut = () => {
+		logOut()
+			.then(() => {})
+			.catch((err) => console.log(err));
+	};
 const menuItems = (
 	<React.Fragment>
 		<li>
@@ -21,18 +33,16 @@ const menuItems = (
 			<Link to="/reviews">Reviews</Link>
 		</li> */}
 
-		{/* {user?.uid ? ( */}
+		{user?.uid ? 
 		<>
+			
 			<li>
-				<Link to="/dashboard">Dashboard</Link>
-			</li>
-			<li>
-				{/* <button onClick={handleLogOut}> */}
-				{/* Sign Out */}
-				{/* </button> */}
+			<button onClick={handleLogOut}> 
+				Log Out
+				 </button>
 			</li>
 		</>
-		{/* ) : ( */}
+		 : 
 		<>
 			<li>
 				<Link to="/login">Login</Link>
@@ -41,15 +51,13 @@ const menuItems = (
 				<Link to="/register">Register</Link>
 			</li>
 		</>
-		{/* )} */}
+		}
 		<li>
 			<Link to="/blog">Blog</Link>
 		</li>
-	
 	</React.Fragment>
 );
 
-const Navbar = () => {
     return (
 		<div className="navbar bg-sky-300 flex justify-between">
 			<div className="navbar-start">

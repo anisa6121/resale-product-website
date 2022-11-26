@@ -104,8 +104,8 @@ const handleSignUp = (data) => {
 								required: "Password is required",
 
 								minLength: {
-									value: 6,
-									message: "Password must be 6 characters or longer",
+									value: 8,
+									message: "Password must be 8 characters or longer",
 								},
 								
 							})}

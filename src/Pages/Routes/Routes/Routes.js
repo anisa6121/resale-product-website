@@ -7,14 +7,15 @@ import Login from "../../Login/Login";
 
 import Registration from "../../Register/Registration";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
-        element: <Main></Main>,
-        errorElement:<ErrorPage></ErrorPage>,
+		element: <Main></Main>,
+		errorElement: <ErrorPage></ErrorPage>,
 		children: [
 			{
 				path: "/",
@@ -25,21 +26,23 @@ export const router = createBrowserRouter([
 				element: <Login></Login>,
 			},
 			{
-                path: "/register",
-                element:<Registration></Registration>
-            },
-            {
-                path: "/blog",
-                element:<Blog></Blog>
-            },
-         
-        ],
-        
-    },
-    {
-        path: "/dashboard",
-        element:<Dashboard></Dashboard>
-    }
+				path: "/register",
+				element: <Registration></Registration>,
+			},
+			{
+				path: "/blog",
+				element: <Blog></Blog>,
+			},
+		],
+	},
+	{
+		path: "/dashboard",
+		element: (
+			<PrivateRoute>
+				<Dashboard></Dashboard>
+			</PrivateRoute>
+		),
+	},
 ]);
 
 export default router;

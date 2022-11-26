@@ -9,7 +9,14 @@ const PrivateRoute = ({ children }) => {
 
 	if (loading) {
 		// return <progress className="progress w-56"></progress>;
-       
+    return (
+		<div className="flex items-center justify-center m-7 space-x-2">
+			<div className="w-4 h-4 rounded-full animate-pulse bg-violet-500"></div>
+			<div className="w-4 h-4 rounded-full animate-pulse bg-violet-500"></div>
+			<div className="w-4 h-4 rounded-full animate-pulse  bg-violet-500"></div>
+			<div className="w-4 h-4 rounded-full animate-pulse  bg-violet-500"></div>
+		</div>
+    );     
 		
 	}
 

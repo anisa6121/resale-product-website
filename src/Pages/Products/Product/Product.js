@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+
+import { useQuery } from '@tanstack/react-query';
+
 import Loading from '../../Shared/Loading/Loading';
 import ProductCategory from '../ProductCategory/ProductCategory';
 
@@ -6,27 +8,22 @@ import ProductCategory from '../ProductCategory/ProductCategory';
 const Product = () => {
 
 
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const { data: products = [], isLoading } = useQuery({
+        queryKey: ["products"],
+        queryFn: async () => {
+            const res = await fetch("http://localhost:8000/allProduct")
+            const data = await res.json()
+            return data
+            
+        }
 
-      useEffect(() => {
-		fetch("http://localhost:8000/allProduct")
-			.then((res) => res.json())
-            .then(data => {
-                console.log(data);
-                setProducts(data)
-                setLoading(false)
-              });
-          
-          
-          setLoading(true);
-      }, []);
-    
-    if (loading) {
-		return (
-			<Loading></Loading>
-		);
+		
+    });
+
+if (isLoading) {
+    return <Loading></Loading>
     }
+    
     return (
 		<>
 			<div className="text-center" >

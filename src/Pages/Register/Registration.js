@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Registration = () => {
@@ -9,6 +9,7 @@ const {register,formState: { errors },handleSubmit,} = useForm();
 
     const [error, setError] = useState("");  
     
+    const navigate = useNavigate();
     const { createUser, updateUser } = useContext(AuthContext); 
     
 const handleSignUp = (data) => {
@@ -31,6 +32,7 @@ const handleSignUp = (data) => {
 			updateUser(userInfo)
 				.then(() => {
 					// saveUser(data.name, data.email);
+                    navigate("/")
 				})
 				.catch((err) => console.log(err));
 		})
@@ -46,8 +48,8 @@ const handleSignUp = (data) => {
 		<div className="h-[800px] flex justify-center items-center">
 			<div className="w-96 p-7">
 				<h2 className="text-3xl  text-center">
-					{" "}
-					Register{" "}
+					
+					Register
 				</h2>
 
 				<form onSubmit={handleSubmit(handleSignUp)}>

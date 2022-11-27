@@ -23,7 +23,10 @@ const [product, setProduct] = useState(null)
 			</div>
 
 			{product && 
-				<BookingModal product={product}></BookingModal>
+				<BookingModal
+                 product={product}
+                 setProduct={setProduct}
+                ></BookingModal>
 			}
 		</div>
     );

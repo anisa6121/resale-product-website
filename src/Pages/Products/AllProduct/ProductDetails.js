@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const productDetails = ({ data }) => {
-const { img, name, OriginalPrice, ResalePrice, Seller, location, post, use } =
-	data;
-    return (
+
+const productDetails = ({ data, setProduct }) => {
+const {img,name,OriginalPrice,ResalePrice,Seller,location,post,use,} = data;
+	return (
 		<div className="card card-compact  bg-base-100 shadow-xl">
 			<figure>
 				<img className="h-60 " src={img} alt="img" />
@@ -25,9 +24,9 @@ const { img, name, OriginalPrice, ResalePrice, Seller, location, post, use } =
 					<label
 						htmlFor="booking-modal"
 						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-						// onClick={() =>
-						// 	setTreatment(appointmentOption)
-						// }
+						onClick={() =>
+							setProduct(data)
+						}
 					>
 						Purchase
 					</label>
@@ -40,7 +39,7 @@ const { img, name, OriginalPrice, ResalePrice, Seller, location, post, use } =
 				</div>
 			</div>
 		</div>
-    );
+	);
 };
 
 export default productDetails;

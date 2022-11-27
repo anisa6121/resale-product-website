@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ProductDetails from "../AllProduct/ProductDetails";
 import BookingModal from './BookingModal/BookingModal';
 
 const AllProduct = () => {
 
-
+const [product, setProduct] = useState(null)
     const loadData = useLoaderData()
     console.log(loadData);
     const getData = loadData.items 
@@ -17,11 +17,14 @@ const AllProduct = () => {
 					<ProductDetails
 						data={data}
 						key={i}
+						setProduct={setProduct}
 					></ProductDetails>
 				))}
-            </div>
-            
-            <BookingModal></BookingModal>
+			</div>
+
+			{product && 
+				<BookingModal product={product}></BookingModal>
+			}
 		</div>
     );
 };

@@ -1,7 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const BookingModal = () => {
-    return (
+const BookingModal = ({ product }) => {
+
+    const {user} = useContext(AuthContext)
+
+    const { name:itemName, ResalePrice } = product;
+
+    const handleBooking = (event) => {
+		event.preventDefault();
+		const form = event.target;
+
+		const location = form.location.value;
+		const name = form.name.value;
+		const email = form.email.value;
+		const phone = form.phone.value;
+		// [3, 4, 5].map((value, i) => console.log(value))
+
+		const booking = {
+			
+			name,
+			email,
+            phone,
+            location,
+            productName:itemName,
+			price: ResalePrice,
+		};
+
+		
+		console.log(booking);
+
+    };
+	return (
 		<>
 			<input
 				type="checkbox"
@@ -17,22 +47,34 @@ const BookingModal = () => {
 						✕
 					</label>
 					<h3 className="text-lg font-bold">
-						{/* {treatmentName} */}
+						Product Name: {itemName}
 					</h3>
-
+					<p className="text-xl">
+						Item Price : {ResalePrice}
+					</p>
 					<form
-						// onSubmit={handleBooking}
+						onSubmit={handleBooking}
 						className="grid grid-cols-1 gap-3 mt-10"
 					>
 						<input
 							required
-							// defaultValue={
-							// 	user?.displayName
-							// }
-							disabled
+							defaultValue={
+								user?.displayName
+							}
+							readOnly
 							name="name"
 							type="text"
 							placeholder="Your Name"
+							className="input w-full input-bordered"
+						/>
+
+						<input
+							required
+							defaultValue={user?.email}
+							readOnly
+							name="email"
+							type="email"
+							placeholder="Email Address"
 							className="input w-full input-bordered"
 						/>
 
@@ -42,15 +84,7 @@ const BookingModal = () => {
 							placeholder="location"
 							className="input w-full input-bordered"
 						/>
-						<input
-							required
-							// defaultValue={user?.email}
-							readOnly
-							name="email"
-							type="email"
-							placeholder="Email Address"
-							className="input w-full input-bordered"
-						/>
+
 						<input
 							name="phone"
 							type="text"
@@ -60,7 +94,7 @@ const BookingModal = () => {
 
 						<br />
 						<input
-							className="btn btn-accent w-full"
+							className="btn btn-primary w-full"
 							type="submit"
 							value="Submit"
 						/>
@@ -68,7 +102,7 @@ const BookingModal = () => {
 				</div>
 			</div>
 		</>
-    );
+	);
 };
 
 export default BookingModal;

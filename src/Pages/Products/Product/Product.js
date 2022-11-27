@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../../Shared/Loading/Loading';
 import ProductCategory from '../ProductCategory/ProductCategory';
 
 
@@ -23,7 +24,7 @@ const Product = () => {
     
     if (loading) {
 		return (
-			<div className="w-16 mx-auto m-6 h-16 border-4 border-dashed rounded-full animate-spin border-orange-500"></div>
+			<Loading></Loading>
 		);
     }
     return (

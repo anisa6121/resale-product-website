@@ -21,13 +21,22 @@ const { img, name, OriginalPrice, ResalePrice, Seller, location, post, use } =
 					<p>Seller: {Seller}</p>
 				</div>
 
-				<div className="card-actions justify-start">
-					<Link
+				<div className="card-actions justify-end">
+					<label
+						htmlFor="booking-modal"
+						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+						// onClick={() =>
+						// 	setTreatment(appointmentOption)
+						// }
+					>
+						Purchase
+					</label>
+					{/* <Link
 						// to={`/allProduct/${_id}`}
 						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 					>
-						See All
-					</Link>
+						Purchase
+					</Link> */}
 				</div>
 			</div>
 		</div>

@@ -4,7 +4,7 @@ import { HiOutlineShoppingBag, HiOutlineRefresh } from "react-icons/hi";
 import { BiSupport } from "react-icons/bi";
 const Section = () => {
     return (
-		<section className="m-7 grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-12 ">
+		<section className=" m-7 grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-12 ">
 			<div className="relative">
 				<div className="relative">
 					<div className=" rounded-full text-white">

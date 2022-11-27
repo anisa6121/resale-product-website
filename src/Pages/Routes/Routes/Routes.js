@@ -4,6 +4,7 @@ import Blog from "../../Blog/Blog";
 import Dashboard from "../../Dashboard/Dashboard";
 import Home from "../../Home/Home/Home";
 import Login from "../../Login/Login";
+import AllProduct from "../../Products/AllProduct/AllProduct";
 
 import Registration from "../../Register/Registration";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
@@ -32,6 +33,15 @@ export const router = createBrowserRouter([
 			{
 				path: "/blog",
 				element: <Blog></Blog>,
+			},
+
+			{
+				path: "/allProduct/:id",
+				element: (
+					<PrivateRoute>
+						<AllProduct></AllProduct>
+					</PrivateRoute>
+				),
 			},
 		],
 	},

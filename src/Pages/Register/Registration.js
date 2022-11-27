@@ -45,15 +45,16 @@ const handleSignUp = (data) => {
     return (
 		<div className="h-[800px] flex justify-center items-center">
 			<div className="w-96 p-7">
-				<h2 className="text-3xl  text-center"> Register </h2>
+				<h2 className="text-3xl  text-center">
+					{" "}
+					Register{" "}
+				</h2>
 
-                <form onSubmit={handleSubmit(handleSignUp)}>
-              
+				<form onSubmit={handleSubmit(handleSignUp)}>
 					{/* daisy ui */}
 
 					<div className="form-control w-full max-w-xs">
 						<label className="label">
-						
 							<span className="label-text">
 								Name
 							</span>
@@ -110,7 +111,6 @@ const handleSignUp = (data) => {
 									value: 8,
 									message: "Password must be 8 characters or longer",
 								},
-								
 							})}
 							className="input input-bordered w-full max-w-xs"
 						/>
@@ -125,9 +125,22 @@ const handleSignUp = (data) => {
 								}
 							</p>
 						)}
-
-					
 					</div>
+
+					{/* <select
+						className="select  mt-4 max-w-xs  select-bordered w-full"
+						{...register("user")}
+					>
+						<option value="user">User</option>
+						<option value="seller">Seller</option>
+					</select> */}
+					{/* <select
+						name="select"
+						className="select  mt-4 max-w-xs  select-bordered w-full"
+					>
+						<option>Seller</option>
+						<option>User</option>
+					</select> */}
 
 					<input
 						className="btn text-white btn-primary w-full mt-4"

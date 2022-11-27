@@ -5,14 +5,27 @@ import ProductCategory from '../ProductCategory/ProductCategory';
 const Product = () => {
 
 
-      const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
       useEffect(() => {
 		fetch("http://localhost:8000/allProduct")
 			.then((res) => res.json())
-			.then((data) => setProducts(data));
+            .then(data => {
+                console.log(data);
+                setProducts(data)
+                setLoading(false)
+              });
+          
+          
+          setLoading(true);
       }, []);
     
+    if (loading) {
+		return (
+			<div className="w-16 mx-auto m-6 h-16 border-4 border-dashed rounded-full animate-spin border-orange-500"></div>
+		);
+    }
     return (
 		<>
 			<div className="text-center" >

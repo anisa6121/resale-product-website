@@ -17,6 +17,7 @@ const { img, name, OriginalPrice, ResalePrice, Seller, location, post, use } =
 					<p>location: {location}</p>
 					<p>Original Price: {OriginalPrice}</p>
 					<p>Resale Price: {ResalePrice}</p>
+					<p>Months of Use: {use}</p>
 					<p>Seller: {Seller}</p>
 				</div>
 

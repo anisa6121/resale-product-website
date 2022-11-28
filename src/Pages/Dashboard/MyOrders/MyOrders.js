@@ -69,7 +69,7 @@ const MyOrders = () => {
 											booking.price
 										}
 									</td>
-								
+									
 
 									<td>
 										{booking.price &&

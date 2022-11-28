@@ -13,6 +13,8 @@ import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
+import AllBuyer from "../../Dashboard/AllBuyers/AllBuyer";
+import AdminRoute from "../AdminRoute/AdminRoute";
 
 export const router = createBrowserRouter([
 	{
@@ -61,8 +63,16 @@ export const router = createBrowserRouter([
 		),
 		children: [
 			{
-                path: "/dashboard",
-                element:<MyOrders></MyOrders>
+				path: "/dashboard",
+				element: <MyOrders></MyOrders>,
+			},
+			{
+				path: "/dashboard/buyers",
+				element: (
+					<AdminRoute>
+						<AllBuyer></AllBuyer>
+					</AdminRoute>
+				),
 			},
 		],
 	},

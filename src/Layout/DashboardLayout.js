@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider';
+import useAdmin from '../hooks/useAdmin';
 import Footer from '../Pages/Shared/Footer/Footer';
 
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
+
+       const { user } = useContext(AuthContext);
+
+	const [isAdmin] = useAdmin(user?.email);
     return (
-        <div>
-            <Navbar></Navbar>
-           <div className="drawer drawer-mobile">
+		<div>
+			<Navbar></Navbar>
+			<div className="drawer drawer-mobile">
 				<input
 					id="dashboard-drawer"
 					type="checkbox"
@@ -16,44 +22,45 @@ const DashboardLayout = () => {
 				/>
 				<div className="drawer-content  ">
 					<Outlet></Outlet>
-
-					
 				</div>
 				<div className="drawer-side">
 					<label
 						htmlFor="dashboard-drawer"
 						className="drawer-overlay"
 					></label>
-					<ul className="menu p-4 w-80 bg-base-100 text-base-content">
+					<ul className="menu p-4 w-80  bg-base-100 text-base-content">
 						{/* <!-- Sidebar content here --> */}
 						<li>
 							<Link to="/dashboard">
 								My Orders
 							</Link>
 						</li>
-				
-                		{/* <li> 
+
+						<li>
 							{isAdmin && (
 								<>
-									<Link to="/dashboard/allusers">
-										All users
+									<Link to="/dashboard/buyers">
+										All Buyers
 									</Link>
+
+									{/*                                     
 									<Link to="/dashboard/adddoctor">
 										Add A
 										Doctor
 									</Link>
-									
+
 									<Link to="/dashboard/managedoctors ">
-										Manage Doctors
-									</Link>
+										Manage
+										Doctors
+									</Link> */}
 								</>
 							)}
-						</li> */}
+						</li>
 					</ul>
 				</div>
 			</div>
-<Footer></Footer>
-        </div>
+			<Footer></Footer>
+		</div>
     );
 };
 

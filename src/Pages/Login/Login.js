@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
 	const { signIn, googleSignIn } = useContext(AuthContext);
@@ -11,17 +12,18 @@ const Login = () => {
   
   
 
-	const [loginUserEmail, setLoginUserEmail] = useState("");
-	//  const [token] = useToken(loginUserEmail);
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  
+	 const [token] = useToken(loginUserEmail);
 
 	const location = useLocation();
 	const navigate = useNavigate();
 
 	const from = location.state?.from?.pathname || "/";
 
-	//  if (token) {
-	// 		navigate(from, { replace: true });
-	//  }
+	 if (token) {
+			navigate(from, { replace: true });
+	 }
 
 	const {register,formState: { errors },handleSubmit,} = useForm();
 
@@ -47,12 +49,34 @@ const Login = () => {
   const handleGoogleSignIn = () => {
 		googleSignIn()
 			.then((result) => {
-				const user = result.user;
-				console.log(user);
-				// setAuthToken(user);
+        const user = result.user;
+        
+        console.log(user);
+        saveUser(user.displayName, user.email);
+			setLoginUserEmail(user)
 			})
 
 			.catch((er) => console.log(er));
+  };
+
+  const saveUser = (name, email) => {
+		const user = { name, email };
+
+		fetch("http://localhost:8000/users", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+
+			body: JSON.stringify(user),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				// getUserToken(email)
+				console.log("save User", data);
+
+				setLoginUserEmail(email);
+			});
   };
 
 	return (

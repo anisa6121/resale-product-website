@@ -6,7 +6,7 @@ const BookingModal = ({ product, setProduct }) => {
 
     const {user} = useContext(AuthContext)
 
-    const { name:itemName, ResalePrice } = product;
+    const { name:itemName, ResalePrice, img } = product;
 
     const handleBooking = (event) => {
 		event.preventDefault();
@@ -19,7 +19,8 @@ const BookingModal = ({ product, setProduct }) => {
 		// [3, 4, 5].map((value, i) => console.log(value))
 
 		const booking = {
-			name,
+            name,
+            img,
 			email,
 			phone,
 			location,

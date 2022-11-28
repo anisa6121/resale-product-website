@@ -112,7 +112,7 @@ const menuItems = (
 				</ul>
 			</div>
 
-			{/* <label
+			<label
 				htmlFor="dashboard-drawer"
 				tabIndex={2}
 				className="btn btn-ghost lg:hidden"
@@ -131,7 +131,7 @@ const menuItems = (
 						d="M4 6h16M4 12h8m-8 6h16"
 					/>
 				</svg>
-			</label> */}
+			</label>
 		</div>
     );
 };

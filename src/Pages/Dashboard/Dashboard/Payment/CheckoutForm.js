@@ -90,6 +90,7 @@ const CheckoutForm = ({ booking }) => {
 			// setTransactionId(paymentIntent.id)
 
 			const payment = {
+				name,
 				price,
 				transactionId: paymentIntent.id,
 				email,

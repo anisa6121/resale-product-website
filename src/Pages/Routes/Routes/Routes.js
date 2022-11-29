@@ -15,6 +15,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 import AllBuyer from "../../Dashboard/AllBuyers/AllBuyer";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import Payment from "../../Dashboard/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
 	{
@@ -42,16 +43,18 @@ export const router = createBrowserRouter([
 			{
 				path: "/allProduct/:id",
 				element: (
-					<PrivateRoute>
+					// <PrivateRoute>
 						<AllProduct></AllProduct>
-					</PrivateRoute>
+					// {/* </PrivateRoute> */}
 				),
-
-				loader: ({ params }) =>
-					fetch(
+				loader: async ({ params }) => {
+					return fetch(
 						`http://localhost:8000/singleProduct/${params.id}`
-					),
+					);
+				},
 			},
+
+		
 		],
 	},
 	{
@@ -73,6 +76,16 @@ export const router = createBrowserRouter([
 						<AllBuyer></AllBuyer>
 					</AdminRoute>
 				),
+			},
+			{
+				path: "/dashboard/payment/:id",
+
+				element: <Payment></Payment>,
+
+				loader: ({ params }) =>
+					fetch(
+						`http://localhost:8000/bookings/${params.id}`
+					),
 			},
 		],
 	},

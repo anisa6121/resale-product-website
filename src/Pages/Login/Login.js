@@ -21,12 +21,15 @@ const Login = () => {
 
 	const from = location.state?.from?.pathname || "/";
 
-	 if (token) {
-			navigate(from, { replace: true });
-	 }
+	
 
-	const {register,formState: { errors },handleSubmit,} = useForm();
+	const { register, formState: { errors }, handleSubmit, } = useForm();
+	
+ if (token) {
+		navigate(from, { replace: true });
+	}
 
+	
 	const handleLogin = (data) => {
 		console.log(data);
 
@@ -38,14 +41,18 @@ const Login = () => {
 				console.log(user);
 
 				setLoginUserEmail(data.email);
+
+				
 			})
+		
 
 			.catch((error) => {
 				console.log(error.message);
 				setLoginError(error.message);
 			});
+			
   };
-  
+ 
   const handleGoogleSignIn = () => {
 		googleSignIn()
 			.then((result) => {
@@ -72,7 +79,7 @@ const Login = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				// getUserToken(email)
+				
 				console.log("save User", data);
 
 				setLoginUserEmail(email);

@@ -5,11 +5,12 @@ import BookingModal from './BookingModal/BookingModal';
 
 const AllProduct = () => {
 
-const [product, setProduct] = useState(null)
+
     const loadData = useLoaderData()
     console.log(loadData);
     const getData = loadData.items 
-    console.log(getData)
+	console.log(getData)
+	const [product, setProduct] = useState(null);
     return (
 		<div>
 			<div className="m-7 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-5">

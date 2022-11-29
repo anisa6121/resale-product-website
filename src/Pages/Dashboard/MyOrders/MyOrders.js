@@ -72,23 +72,23 @@ const MyOrders = () => {
 									
 
 									<td>
-										{booking.price &&
-											!booking.paid && (
-												<Link
-													to={`/dashboard/payment/${booking._id}`}
-												>
-													<button className="btn btn-primary btn-sm">
-														Pay
-													</button>
-												</Link>
-											)}
+								{booking.price &&
+								!booking.paid && (
+									<Link
+								to={`/dashboard/payment/${booking._id}`}
+								>
+							<button className="btn btn-primary btn-sm">
+											Pay
+									</button>
+									</Link>
+								)}
 
-										{/* {booking.price &&
+										{booking.price &&
 											booking.paid && (
-												<span className="text-green-500">
+												<span className= "text-black font-bold">
 													Paid
 												</span>
-											)} */}
+											)}
 									</td>
 								</tr>
 							))}

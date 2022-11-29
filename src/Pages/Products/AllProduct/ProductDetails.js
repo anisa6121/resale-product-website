@@ -30,12 +30,7 @@ const {img,name,OriginalPrice,ResalePrice,Seller,location,post,use,} = data;
 					>
 						Purchase
 					</label>
-					{/* <Link
-						// to={`/allProduct/${_id}`}
-						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-					>
-						Purchase
-					</Link> */}
+					
 				</div>
 			</div>
 		</div>

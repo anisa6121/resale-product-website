@@ -68,7 +68,7 @@ const saveUser = (name, email) => {
 	})
 		.then((res) => res.json())
 		.then((data) => {
-			// getUserToken(email)
+			
 			console.log("save User", data);
 		
 			setCreatedUserEmail(email);

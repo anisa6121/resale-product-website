@@ -1,13 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../contexts/AuthProvider';
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const MyOrders = () => {
-
- const { user } = useContext(AuthContext);
- const url = `http://localhost:8000/bookings?email=${user?.email}`;
- const { data: bookings = [] } = useQuery({
+	const { user } = useContext(AuthContext);
+	const url = `https://product-server-sand.vercel.app/bookings?email=${user?.email}`;
+	const { data: bookings = [] } = useQuery({
 		queryKey: ["bookings", user?.email],
 		queryFn: async () => {
 			const res = await fetch(url, {
@@ -22,11 +21,9 @@ const MyOrders = () => {
 			console.log(data);
 			return data;
 		},
- });
+	});
 
-
-
-    return (
+	return (
 		<div>
 			<h3 className="text-3xl mt-5 text-center mb-6">
 				My Orders
@@ -69,23 +66,22 @@ const MyOrders = () => {
 											booking.price
 										}
 									</td>
-									
 
 									<td>
-								{booking.price &&
-								!booking.paid && (
-									<Link
-								to={`/dashboard/payment/${booking._id}`}
-								>
-							<button className="btn btn-warning btn-sm">
-											Pay
-									</button>
-									</Link>
-								)}
+										{booking.price &&
+											!booking.paid && (
+												<Link
+													to={`/dashboard/payment/${booking._id}`}
+												>
+													<button className="btn btn-warning btn-sm">
+														Pay
+													</button>
+												</Link>
+											)}
 
 										{booking.price &&
 											booking.paid && (
-												<span className= "text-black font-bold">
+												<span className="text-black font-bold">
 													Paid
 												</span>
 											)}
@@ -96,7 +92,7 @@ const MyOrders = () => {
 				</table>
 			</div>
 		</div>
-    );
+	);
 };
 
 export default MyOrders;

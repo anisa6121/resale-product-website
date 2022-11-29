@@ -5,19 +5,19 @@ const useToken = (email) => {
 
 	useEffect(() => {
 		if (email) {
-			fetch(`http://localhost:8000/jwt?email=${email}`)
-		.then((res) => res.json())
-		.then((data) => {
-			if (data.getToken) {
-				
-				localStorage.setItem("getToken", data.getToken);
+			fetch(
+				`https://product-server-sand.vercel.app/jwt?email=${email}`
+			)
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.getToken) {
+						localStorage.setItem(
+							"getToken",
+							data.getToken
+						);
 						setToken(data.getToken);
-			}
-			
-		
-		});
-			
-			
+					}
+				});
 		}
 	}, [email]);
 	return [token];

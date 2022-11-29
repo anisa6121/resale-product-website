@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
-import toast from 'react-hot-toast';
-import { AuthContext } from '../../../../contexts/AuthProvider';
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const BookingModal = ({ product, setProduct }) => {
+	const { user } = useContext(AuthContext);
 
-    const {user} = useContext(AuthContext)
+	const { name: itemName, ResalePrice, img } = product;
 
-    const { name:itemName, ResalePrice, img } = product;
-
-    const handleBooking = (event) => {
+	const handleBooking = (event) => {
 		event.preventDefault();
 		const form = event.target;
 
@@ -19,8 +18,8 @@ const BookingModal = ({ product, setProduct }) => {
 		// [3, 4, 5].map((value, i) => console.log(value))
 
 		const booking = {
-            name,
-            img,
+			name,
+			img,
 			email,
 			phone,
 			location,
@@ -30,7 +29,7 @@ const BookingModal = ({ product, setProduct }) => {
 
 		console.log(booking);
 
-		fetch("http://localhost:8000/bookings", {
+		fetch("https://product-server-sand.vercel.app/bookings", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -42,17 +41,13 @@ const BookingModal = ({ product, setProduct }) => {
 				console.log(data);
 
 				if (data.acknowledged) {
-				setProduct(null)
+					setProduct(null);
 					toast.success("Product Item confirmed");
-				
-                }
-                else {
+				} else {
 					toast.error(data.message);
 				}
 			});
-
-		
-    };
+	};
 	return (
 		<>
 			<input

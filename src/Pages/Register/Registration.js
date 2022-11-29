@@ -1,87 +1,82 @@
-import React, { useContext, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider';
-import useToken from '../../hooks/useToken';
-
+import React, { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Registration = () => {
-const {register,formState: { errors },handleSubmit,} = useForm();
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+	} = useForm();
 
-    const [error, setError] = useState("");  
-    
-   
-    const { createUser, updateUser } = useContext(AuthContext); 
+	const [error, setError] = useState("");
 
-    const [createdUserEmail, setCreatedUserEmail] = useState("");
-    
-const [token] = useToken(createdUserEmail)
-   
-    const navigate = useNavigate();
-    
- if (token) {
+	const { createUser, updateUser } = useContext(AuthContext);
+
+	const [createdUserEmail, setCreatedUserEmail] = useState("");
+
+	const [token] = useToken(createdUserEmail);
+
+	const navigate = useNavigate();
+
+	if (token) {
 		navigate("/");
-    }
-    
-const handleSignUp = (data) => {
-	console.log(data);
+	}
 
-	setError("");
+	const handleSignUp = (data) => {
+		console.log(data);
 
-	createUser(data.email, data.password)
-		.then((result) => {
-			const user = result.user;
-			console.log(user);
-			toast.success("User Added Successfully.");
+		setError("");
 
+		createUser(data.email, data.password)
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				toast.success("User Added Successfully.");
 
-			const userInfo = {
-				displayName: data.name,
-			};
+				const userInfo = {
+					displayName: data.name,
+				};
 
+				updateUser(userInfo)
+					.then(() => {
+						saveUser(data.name, data.email);
+					})
+					.catch((err) => console.log(err));
+			})
 
-			updateUser(userInfo)
-				.then(() => {
-					saveUser(data.name, data.email);
-                   
-				})
-				.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				setError(error.message);
+			});
+	};
+
+	const saveUser = (name, email) => {
+		const user = { name, email };
+
+		fetch("https://product-server-sand.vercel.app/users", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+
+			body: JSON.stringify(user),
 		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log("save User", data);
 
-		.catch((error) => {
-			console.log(error);
-			setError(error.message);
-		});
-    };
-    
-const saveUser = (name, email) => {
-	const user = { name, email };
+				setCreatedUserEmail(email);
+			});
+	};
 
-	fetch("http://localhost:8000/users", {
-		method: "POST",
-		headers: {
-			"content-type": "application/json",
-		},
-
-		body: JSON.stringify(user),
-	})
-		.then((res) => res.json())
-		.then((data) => {
-			
-			console.log("save User", data);
-		
-			setCreatedUserEmail(email);
-		});
-};
-
-    return (
+	return (
 		<div className="h-[800px] flex justify-center items-center">
 			<div className="w-96 p-7">
-				<h2 className="text-3xl  text-center">
-					
-					Register
-				</h2>
+				<h2 className="text-3xl  text-center">Register</h2>
 
 				<form onSubmit={handleSubmit(handleSignUp)}>
 					{/* daisy ui */}
@@ -199,7 +194,7 @@ const saveUser = (name, email) => {
 				</button>
 			</div>
 		</div>
-    );
+	);
 };
 
 export default Registration;

@@ -1,26 +1,31 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import toast from 'react-hot-toast';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import toast from "react-hot-toast";
 
 const AllBuyer = () => {
-    	const { data: users = [], refetch } = useQuery({
+	const { data: users = [], refetch } = useQuery({
 		queryKey: ["users"],
 		queryFn: async () => {
-			const res = await fetch("http://localhost:8000/users");
+			const res = await fetch(
+				"https://product-server-sand.vercel.app/users"
+			);
 			const data = await res.json();
 			return data;
 		},
 	});
 
 	const handleMakeAdmin = (id) => {
-		fetch(`http://localhost:8000/users/admin/${id}`, {
-			method: "PUT",
-			headers: {
-				authorization: `bearer ${localStorage.getItem(
-					"accessToken"
-				)}`,
-			},
-		})
+		fetch(
+			`https://product-server-sand.vercel.app/users/admin/${id}`,
+			{
+				method: "PUT",
+				headers: {
+					authorization: `bearer ${localStorage.getItem(
+						"accessToken"
+					)}`,
+				},
+			}
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
@@ -29,10 +34,10 @@ const AllBuyer = () => {
 					refetch();
 				}
 			});
-    };
-    
-    const handleDeleteUser = (id) => {
-		fetch(`http://localhost:8000/users/${id}`, {
+	};
+
+	const handleDeleteUser = (id) => {
+		fetch(`https://product-server-sand.vercel.app/users/${id}`, {
 			method: "DELETE",
 			headers: {
 				authorization: `bearer ${localStorage.getItem(
@@ -43,16 +48,12 @@ const AllBuyer = () => {
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.deletedCount > 0) {
-					
-
-					toast.success(
-						' deleted successfully'
-                    );
-                    refetch();
+					toast.success(" deleted successfully");
+					refetch();
 				}
 			});
-    }; 
-    return (
+	};
+	return (
 		<div>
 			<h2 className="text-3xl text-center m7-6">All Buyers</h2>
 			<div className="overflow-x-auto">
@@ -90,11 +91,11 @@ const AllBuyer = () => {
 								</td>
 								<td>
 									<label>
-								<button
-								onClick={()=> handleDeleteUser
-											(
+										<button
+											onClick={() =>
+												handleDeleteUser(
 													user._id
-											)
+												)
 											}
 											className="btn  btn-error"
 										>
@@ -111,7 +112,7 @@ const AllBuyer = () => {
 				</table>
 			</div>
 		</div>
-    );
+	);
 };
 
 export default AllBuyer;

@@ -8,28 +8,24 @@ import useToken from "../../hooks/useToken";
 const Login = () => {
 	const { signIn, googleSignIn } = useContext(AuthContext);
 
-  const [loginError, setLoginError] = useState("");
-  
-  
+	const [loginError, setLoginError] = useState("");
 
-  const [loginUserEmail, setLoginUserEmail] = useState("");
-  
-	 const [token] = useToken(loginUserEmail);
+	const [loginUserEmail, setLoginUserEmail] = useState("");
+
+	const [token] = useToken(loginUserEmail);
 
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	const from = location.state?.from?.pathname || "/";
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+	} = useForm();
 
-	
-
-	const { register, formState: { errors }, handleSubmit, } = useForm();
-	
- if (token) {
-		navigate(from, { replace: true });
+	if (token) {
+		navigate("/");
 	}
-
-	
 	const handleLogin = (data) => {
 		console.log(data);
 
@@ -41,35 +37,31 @@ const Login = () => {
 				console.log(user);
 
 				setLoginUserEmail(data.email);
-
-				
 			})
-		
 
 			.catch((error) => {
 				console.log(error.message);
 				setLoginError(error.message);
 			});
-			
-  };
- 
-  const handleGoogleSignIn = () => {
+	};
+
+	const handleGoogleSignIn = () => {
 		googleSignIn()
 			.then((result) => {
-        const user = result.user;
-        
-        console.log(user);
-        saveUser(user.displayName, user.email);
-			setLoginUserEmail(user)
+				const user = result.user;
+
+				console.log(user);
+				saveUser(user.displayName, user.email);
+				setLoginUserEmail(user);
 			})
 
 			.catch((er) => console.log(er));
-  };
+	};
 
-  const saveUser = (name, email) => {
+	const saveUser = (name, email) => {
 		const user = { name, email };
 
-		fetch("http://localhost:8000/users", {
+		fetch("https://product-server-sand.vercel.app/users", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -79,12 +71,11 @@ const Login = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				
 				console.log("save User", data);
 
 				setLoginUserEmail(email);
 			});
-  };
+	};
 
 	return (
 		<div className="h-[800px] flex justify-center items-center">

@@ -12,7 +12,6 @@ import Registration from "../../Register/Registration";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
-
 import AllBuyer from "../../Dashboard/AllBuyers/AllBuyer";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import Payment from "../../Dashboard/Dashboard/Payment/Payment";
@@ -43,22 +42,21 @@ export const router = createBrowserRouter([
 			{
 				path: "/allProduct/:id",
 				element: (
-					// <PrivateRoute>
+					<PrivateRoute>
 						<AllProduct></AllProduct>
-					// {/* </PrivateRoute> */}
+					</PrivateRoute>
 				),
 				loader: async ({ params }) => {
 					return fetch(
-						`http://localhost:8000/singleProduct/${params.id}`
+						`https://product-server-sand.vercel.app/singleProduct/${params.id}`
 					);
 				},
 			},
-
-		
 		],
 	},
 	{
 		path: "/dashboard",
+		errorElement:<ErrorPage></ErrorPage>,
 		element: (
 			<PrivateRoute>
 				<DashboardLayout></DashboardLayout>
@@ -84,7 +82,7 @@ export const router = createBrowserRouter([
 
 				loader: ({ params }) =>
 					fetch(
-						`http://localhost:8000/bookings/${params.id}`
+						`https://product-server-sand.vercel.app/bookings/${params.id}`
 					),
 			},
 		],

@@ -13,3 +13,6 @@ Website Name: Our Product
 8 - I used Tailwind and daisyUi to Complete this project.
 9 - Tailwind CSS can be used to make websites in the fastest and the easiest way.
 Tailwind CSS is basically a utility-first CSS.
+
+Admin- anisa@ph.com
+Pass- 12345678

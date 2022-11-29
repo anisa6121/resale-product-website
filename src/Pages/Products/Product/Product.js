@@ -1,27 +1,25 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-import Loading from '../../Shared/Loading/Loading';
-import ProductCategory from '../ProductCategory/ProductCategory';
-
+import Loading from "../../Shared/Loading/Loading";
+import ProductCategory from "../ProductCategory/ProductCategory";
 
 const Product = () => {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
-		axios.get("http://localhost:8000/allProduct")
-			
-	.then((data) => {
-		console.log(data.data);
-		setProducts(data.data);
-		setLoading(false)
+		axios.get("https://product-server-sand.vercel.app/allProduct")
+		.then((data) => {
+			console.log(data.data);
+			setProducts(data.data);
+			setLoading(false);
 		});
-		setLoading(true)
+		setLoading(true);
 	}, []);
 
-	if(loading) {
-	    return <Loading></Loading>
-	    }
+	if (loading) {
+		return <Loading></Loading>;
+	}
 	return (
 		<>
 			<div className="text-center">

@@ -19,7 +19,7 @@ const Banner = () => {
 
 					<p className="mt-6 mb-8 text-2xl sm:mb-12">
 						Buy our Products for Good quality And
-						fast delivery.
+						fast delivery. It
 					</p>
 
 					<div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">

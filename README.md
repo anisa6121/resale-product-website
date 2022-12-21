@@ -2,7 +2,7 @@ Website Name: Our Product
 --- Link: https: https://product-sell-project.firebaseapp.com/
 2 - First i'm secure my firebase.config file using env variable.
 
-3 - secondly i choose website name.
+3 - secondly i choose website name. 
 
 4 - Third i create navbar and add logo. 
 

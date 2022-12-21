@@ -43,9 +43,9 @@ const MyOrders = () => {
 					</thead>
 					<tbody>
 						{bookings &&
-							bookings?.map((booking, i) => (
+							bookings?.map((booking) => (
 								<tr key={booking._id}>
-									<th>{i + 1}</th>
+									<th></th>
 									<div className="avatar">
 										<div className="w-24 rounded-full">
 											<img
@@ -84,7 +84,7 @@ const MyOrders = () => {
 												<span className="text-black font-bold">
 													Paid
 												</span>
-											)}
+											)} 
 									</td>
 								</tr>
 							))}

@@ -31,7 +31,7 @@ const Product = () => {
 				</h2>
 			</div>
 			<div className="mt-3 mb-4 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-5">
-				{products.map((product) => (
+				{products?.map((product) => (
 					<ProductCategory
 						product={product}
 						key={product._id}

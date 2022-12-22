@@ -6,6 +6,12 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import useToken from "../../hooks/useToken";
 
 const Login = () => {
+const {
+	register,
+	formState: { errors },
+	handleSubmit,
+} = useForm();
+ 
 	const { signIn, googleSignIn } = useContext(AuthContext);
 
 	const [loginError, setLoginError] = useState("");
@@ -15,16 +21,14 @@ const Login = () => {
 	const [token] = useToken(loginUserEmail);
 
 	const location = useLocation();
+	const from = location.state?.from?.pathname || "/";
 	const navigate = useNavigate();
 
-	const {
-		register,
-		formState: { errors },
-		handleSubmit,
-	} = useForm();
+	
 
 	if (token) {
 		navigate("/");
+			// navigate(from, { replace: true })
 	}
 	const handleLogin = (data) => {
 		console.log(data);
